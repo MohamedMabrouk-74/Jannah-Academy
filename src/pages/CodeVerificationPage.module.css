@@ -1,0 +1,116 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 32px 80px;
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.mailIcon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #5a4fcf, #7c6af7);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 40px rgba(124,106,247,0.3);
+}
+
+.stepBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(124,106,247,0.15);
+  border: 1px solid rgba(124,106,247,0.35);
+  color: #a29bfe;
+  padding: 5px 14px;
+  border-radius: 40px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 700;
+  color: #f0eeff;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+
+.sub {
+  font-size: 15px;
+  color: rgba(240,238,255,0.55);
+  line-height: 1.65;
+  margin-bottom: 36px;
+}
+
+.email {
+  color: #a29bfe;
+}
+
+.otpRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.otpBox {
+  width: 52px;
+  height: 60px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f0eeff;
+  text-align: center;
+  outline: none;
+  caret-color: #a29bfe;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: var(--font-display);
+}
+
+.otpBox:focus {
+  border-color: rgba(124,106,247,0.7);
+  background: rgba(124,106,247,0.08);
+}
+
+.otpFilled {
+  border-color: rgba(124,106,247,0.5);
+}
+
+.resendRow {
+  font-size: 13px;
+  color: rgba(240,238,255,0.4);
+  margin-top: 20px;
+}
+
+.resendBtn {
+  background: none;
+  border: none;
+  color: #a29bfe;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.resendBtn:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 400px) {
+  .otpBox {
+    width: 42px;
+    height: 50px;
+    font-size: 18px;
+  }
+}

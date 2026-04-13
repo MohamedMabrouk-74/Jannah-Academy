@@ -1,0 +1,90 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 52px 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #5a4fcf, #7c6af7);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #fff;
+}
+
+.brandText {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f0eeff;
+  font-family: var(--font-display);
+}
+
+.brandAccent {
+  color: #a29bfe;
+}
+
+.secureBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(124,106,247,0.12);
+  border: 1px solid rgba(124,106,247,0.3);
+  color: #a29bfe;
+  padding: 5px 14px;
+  border-radius: 40px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #f0eeff;
+  letter-spacing: -0.8px;
+  margin-bottom: 8px;
+}
+
+.sub {
+  font-size: 15px;
+  color: rgba(240,238,255,0.5);
+  margin-bottom: 28px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+}
+
+.forgotBtn {
+  display: block;
+  background: none;
+  border: none;
+  color: #a29bfe;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 16px auto 0;
+  transition: opacity 0.2s;
+}
+
+.forgotBtn:hover {
+  opacity: 0.75;
+}
