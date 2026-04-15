@@ -1,0 +1,112 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow {
+  position: absolute;
+  top: 5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(124, 106, 247, 0.05) 0%, rgba(124, 106, 247, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.title {
+  font-size: 56px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+.sub {
+  max-width: 520px;
+  color: #94A3B8;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.highlight {
+  color: #A855F7;
+  font-weight: 600;
+}
+
+.email {
+  color: #A855F7;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.orderCard {
+  width: 100%;
+  max-width: 440px;
+  background: #131522;
+  border: 1px solid rgba(124, 106, 247, 0.1);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 32px;
+}
+
+.orderTitle {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.detailLabel {
+  color: #64748B;
+  font-size: 13.5px;
+}
+
+.detailVal {
+  color: #F8FAFC;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.amountCharged {
+  color: #22C55E !important; 
+  font-weight: 700 !important;
+  font-size: 15px !important;
+}
+
+.downloadBtn {
+  background: none;
+  border: none;
+  color: #475569;
+  font-size: 13px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.downloadBtn:hover {
+  color: #FFFFFF;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
