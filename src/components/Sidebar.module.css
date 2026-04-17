@@ -1,0 +1,363 @@
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: #0d0b1a;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  transition: width 0.25s ease, min-width 0.25s ease;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.collapsed {
+  width: 64px;
+  min-width: 64px;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+.brandLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background: linear-gradient(135deg, #5a4fcf, #7c6af7);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #fff;
+}
+
+.brandName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f0eeff;
+  white-space: nowrap;
+  font-family: var(--font-display);
+}
+
+.brandAccent {
+  color: #a29bfe;
+}
+
+.collapseBtn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: border-color 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.collapseBtn:hover {
+  border-color: rgba(124, 106, 247, 0.5);
+  color: #a29bfe;
+}
+
+/* Scrollable content */
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+
+/* Groups */
+.group {
+  padding: 16px 0 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.group:last-child {
+  border-bottom: none;
+}
+
+.groupLabel {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 0 16px 8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dashHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 14px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #7c6af7;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* Nav items */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 14px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 14px;
+  text-align: left;
+  border-radius: 0;
+  transition: color 0.18s, background 0.18s;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.itemActive {
+  background: rgba(124, 106, 247, 0.18) !important;
+  color: #f0eeff !important;
+  border-radius: 10px;
+  margin: 0 8px;
+  width: calc(100% - 16px);
+  padding: 9px 10px;
+}
+
+.itemIcon {
+  font-size: 15px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.itemActive .itemIcon {
+  opacity: 1;
+}
+
+.itemLabel {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activeDot {
+  width: 6px;
+  height: 6px;
+  background: #7c6af7;
+  border-radius: 50%;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Dashboard colored icons */
+.dashIcon {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 8px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+/* User row */
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.userAvatar {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5a4fcf, #7c6af7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.userInfo {
+  overflow: hidden;
+}
+
+.userName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f0eeff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userEmail {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease, width 0.25s ease;
+  }
+
+  .sidebar:not(.collapsed) {
+    transform: translateX(0);
+  }
+}
+
+/* Registration flow block */
+.flowBlock {
+  margin: 4px 10px 4px;
+  background: rgba(124,106,247,0.06);
+  border: 1px solid rgba(124,106,247,0.15);
+  border-radius: 10px;
+  padding: 14px 12px 12px;
+}
+
+.flowTitle {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.flowSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.flowStep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flowDot {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  transition: all 0.2s;
+}
+
+.flowActive {
+  border-color: #7c6af7;
+  background: #7c6af7;
+  color: #fff;
+}
+
+.flowDone {
+  border-color: #34d399;
+  background: #34d399;
+  color: #fff;
+}
+
+.flowLabel {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+.flowLabelActive {
+  color: #f0eeff;
+  font-weight: 500;
+}
+
+.flowLabelDone {
+  color: rgba(240,238,255,0.5);
+}
+
+.progressTrack {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #5a4fcf, #7c6af7);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
