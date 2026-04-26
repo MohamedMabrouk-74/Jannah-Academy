@@ -361,3 +361,43 @@
   border-radius: 4px;
   transition: width 0.4s ease;
 }
+
+/* Role header when logged in */
+.roleHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 6px;
+}
+
+.roleAvatar {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.roleInfo {
+  overflow: hidden;
+}
+
+.roleName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f0eeff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roleTitle {
+  font-size: 11px;
+  color: rgba(240,238,255,0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

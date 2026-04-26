@@ -1,26 +1,52 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth, ROLE_CONFIGS } from '../context/AuthContext'
 import f from '../components/FormFields.module.css'
 import styles from './StaffLoginPage.module.css'
 
-const ROLES = [
-  'CEO',
-  'Marketing Manager',
-  'Marketer',
-  'Social Media Manager',
-  'Instructor',
-  'Customer Service',
-]
+const ROLE_ROUTES = {
+  'CEO':                  '/dashboard/ceo',
+  'Marketing Manager':    '/dashboard/marketing',
+  'Marketer':             '/dashboard/marketer',
+  'Social Media Manager': '/dashboard/social-media',
+  'Instructor':           '/dashboard/instructor',
+  'Customer Service':     '/dashboard/customer-service',
+}
+
+const HINT_EMAILS = {
+  'CEO':                  'ceo@academy.com',
+  'Marketing Manager':    'mm@academy.com',
+  'Marketer':             'mk@academy.com',
+  'Social Media Manager': 'sm@academy.com',
+  'Instructor':           'ins@academy.com',
+  'Customer Service':     'cs@academy.com',
+}
 
 export default function StaffLoginPage() {
   const navigate = useNavigate()
+  const { login, loginError } = useAuth()
   const [role, setRole] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleRoleChange = (r) => {
+    setRole(r)
+    setEmail(HINT_EMAILS[r] || '')
+  }
+
+  // user.login() + user.verify() from class diagram
+  const handleSignIn = async () => {
+    if (!role || !email || !password) return
+    setLoading(true)
+    await new Promise(r => setTimeout(r, 600)) // simulate API
+    const ok = login(email, password, role)
+    setLoading(false)
+    if (ok) navigate(ROLE_ROUTES[role])
+  }
 
   return (
     <div className={styles.page}>
-      {/* Logo */}
       <div className={styles.brand}>
         <div className={styles.logoIcon}>✦</div>
         <span className={styles.brandText}>
@@ -28,27 +54,23 @@ export default function StaffLoginPage() {
         </span>
       </div>
 
-      <div className={styles.secureBadge}>⊙ Secure Staff Access Only</div>
-
+      <div className={styles.secureBadge}>🔒 Secure Staff Access Only</div>
       <h1 className={styles.title}>Staff Login</h1>
       <p className={styles.sub}>Sign in to access your dashboard</p>
 
       <div className={styles.card}>
-        {/* Role selector */}
-        <div className={f.field}>
-          <label className={f.label}>Select your role</label>
-          <div style={{ position: 'relative' }}>
-            <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', fontSize: 15, opacity: 0.45 }}>👤</span>
-            <select
-              className={f.select}
-              style={{ paddingLeft: 38 }}
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
+        {/* role hint pills */}
+        <div className={styles.rolePills}>
+          {Object.keys(ROLE_CONFIGS).map(r => (
+            <button
+              key={r}
+              className={`${styles.pill} ${role === r ? styles.pillActive : ''}`}
+              onClick={() => handleRoleChange(r)}
+              style={role === r ? { borderColor: ROLE_CONFIGS[r].color, color: ROLE_CONFIGS[r].color, background: ROLE_CONFIGS[r].color + '18' } : {}}
             >
-              <option value="">Choose your role...</option>
-              {ROLES.map((r) => <option key={r}>{r}</option>)}
-            </select>
-          </div>
+              {ROLE_CONFIGS[r].icon} {r}
+            </button>
+          ))}
         </div>
 
         {/* Email */}
@@ -61,7 +83,7 @@ export default function StaffLoginPage() {
               type="email"
               placeholder="your.email@academy.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
         </div>
@@ -76,13 +98,28 @@ export default function StaffLoginPage() {
               type="password"
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleSignIn()}
             />
           </div>
         </div>
 
-        <button className={f.submitBtn} style={{ marginTop: 4 }}>
-          ⊙ Sign In
+        {loginError && (
+          <div className={styles.errorMsg}>⚠ {loginError}</div>
+        )}
+
+        {/* Dev hint */}
+        <div className={styles.hint}>
+          💡 Demo password: any 4+ characters
+        </div>
+
+        <button
+          className={f.submitBtn}
+          style={{ marginTop: 4, opacity: loading ? 0.7 : 1 }}
+          onClick={handleSignIn}
+          disabled={loading}
+        >
+          {loading ? '⏳ Signing in...' : '⊙ Sign In'}
         </button>
 
         <button className={styles.forgotBtn}>Forgot your password?</button>
