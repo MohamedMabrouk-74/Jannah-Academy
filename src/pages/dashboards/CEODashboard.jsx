@@ -26,6 +26,15 @@ const COURSES = [
   { name:'Tajweed Mastery',    students:1240, rev:'$35K',  growth:'+22%', up:true,  rating:4.9 },
 ]
 
+// القيم الابتدائية للخطط
+const INITIAL_PLANS = [
+  { id: 1, text: 'Expand to 3 new GCC markets by Q4 2026', status: 'Active', color: '#4ade80' },
+  { id: 2, text: 'Reach 20,000 enrolled students by end of FY2026', status: 'Active', color: '#4ade80' },
+  { id: 3, text: 'Launch 12 new instructor-led courses this semester', status: 'In Progress', color: '#60a5fa' },
+  { id: 4, text: 'Achieve 96% student retention target', status: 'In Progress', color: '#60a5fa' },
+  { id: 5, text: 'Integrate AI-powered learning path recommendations', status: 'Planned', color: '#fbbf24' },
+]
+
 function FadePanel({ children, delay = 0, style = {} }) {
   const [ref, inView] = useInView()
   return (
@@ -51,6 +60,35 @@ function FadeTable({ children, delay = 0 }) {
 }
 
 export default function CEODashboard() {
+  // تحويل الخطط إلى State لكي نتمكن من التعديل عليها والإضافة لها
+  const [plans, setPlans] = useState(INITIAL_PLANS)
+  const [directive, setDirective] = useState('')
+  const [priority, setPriority] = useState('High')
+  const [saving, setSaving] = useState(false)
+
+  const handleSetPlan = () => {
+    // منع إضافة خطة فارغة
+    if (!directive.trim()) return;
+    
+    setSaving(true)
+    
+    // محاكاة تأخير الإرسال (API Call)
+    setTimeout(() => {
+      const newPlan = {
+        id: Date.now(), // إعطاء ID فريد
+        text: directive,
+        status: 'Active', // جعل الخطة الجديدة نشطة افتراضياً
+        color: '#4ade80' 
+      }
+
+      // إضافة الخطة الجديدة إلى أعلى القائمة
+      setPlans(prevPlans => [newPlan, ...prevPlans])
+      
+      setSaving(false)
+      setDirective('') // تفريغ حقل الإدخال
+    }, 1000)
+  }
+
   return (
     <DashboardLayout avatar="KA" title="CEO Dashboard" subtitle="Strategic Overview">
       <div className={d.statsGrid}>
@@ -60,16 +98,74 @@ export default function CEODashboard() {
         <StatCard icon="📖" iconBg="rgba(251,191,36,0.15)"  label="Active Courses"  value="47"    sub="12 launching soon"     change="+8"     changeUp delay={240} />
       </div>
 
+      {/* ── قسم Strategic Plans ── */}
+      <div style={{ margin: '0 32px 24px' }}>
+        <FadePanel delay={80} style={{ padding: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
+            <div style={{ width: 42, height: 42, borderRadius: 12, background: 'rgba(124,106,247,0.12)', border: '1px solid rgba(124,106,247,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, color: '#a29bfe' }}>⚑</div>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: '#f0eeff', marginBottom: 4 }}>Set Strategic Plans</div>
+              <div style={{ fontSize: 12, color: 'rgba(240,238,255,0.45)' }}>Define & track academy directives</div>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: 24 }}>
+            {/* عرض القائمة من الـ State */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {plans.map(p => (
+                <div key={p.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: p.color, boxShadow: `0 0 8px ${p.color}80` }} />
+                    <span style={{ fontSize: 13, color: 'rgba(240,238,255,0.85)' }}>{p.text}</span>
+                  </div>
+                  <span style={{ fontSize: 11, color: p.color, fontWeight: 600 }}>{p.status}</span>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ fontSize: 12, color: 'rgba(240,238,255,0.5)', marginBottom: 12 }}>Set New Directive</div>
+              <textarea 
+                value={directive}
+                onChange={(e) => setDirective(e.target.value)}
+                placeholder="Describe the strategic plan or directive..." 
+                style={{ width: '100%', height: 100, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '14px', color: '#f0eeff', fontSize: 13, resize: 'none', marginBottom: 16, outline: 'none', fontFamily: 'var(--font-sans)' }} 
+              />
+              <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
+                {['High', 'Medium'].map(lvl => (
+                  <button 
+                    key={lvl}
+                    onClick={() => setPriority(lvl)}
+                    style={{ 
+                      flex: 1, padding: '10px', 
+                      background: priority === lvl ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.03)', 
+                      border: priority === lvl ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(255,255,255,0.08)', 
+                      borderRadius: 10, color: priority === lvl ? '#f0eeff' : 'rgba(240,238,255,0.5)', 
+                      fontSize: 12, fontWeight: priority === lvl ? 600 : 400, cursor: 'pointer', transition: 'all 0.2s' 
+                    }}
+                  >
+                    {lvl}
+                  </button>
+                ))}
+              </div>
+              <button 
+                onClick={handleSetPlan}
+                disabled={!directive.trim()} // تعطيل الزر إذا كان الحقل فارغاً
+                style={{ width: '100%', padding: '12px', background: saving ? 'linear-gradient(135deg,#059669,#34d399)' : 'linear-gradient(135deg,#5a4fcf,#7c6af7)', opacity: !directive.trim() ? 0.5 : 1, border: 'none', borderRadius: 10, color: '#fff', fontSize: 14, fontWeight: 600, cursor: !directive.trim() ? 'not-allowed' : 'pointer', transition: 'all 0.3s' }}
+              >
+                {saving ? '✓ Saved Successfully' : '⚑ Set Plan'}
+              </button>
+            </div>
+          </div>
+        </FadePanel>
+      </div>
+
       <div className={d.twoCol}>
         <FadePanel delay={100}>
           <div className={d.panelHeader}>
             <div>
               <div className={d.panelTitle}>Revenue vs Target</div>
               <div className={d.panelSub}>Monthly performance overview — FY 2025-2026</div>
-            </div>
-            <div className={d.tabGroup}>
-              <button className={d.tab}>7D</button>
-              <button className={`${d.tab} ${d.tabActive}`}>30D</button>
             </div>
           </div>
           <div className={d.chartArea}>
@@ -94,10 +190,6 @@ export default function CEODashboard() {
               <div className={d.panelTitle}>Course Enrollment</div>
               <div className={d.panelSub}>Students by program</div>
             </div>
-            <div className={d.tabGroup}>
-              <button className={d.tab}>7D</button>
-              <button className={`${d.tab} ${d.tabActive}`}>30D</button>
-            </div>
           </div>
           <div style={{display:'flex',justifyContent:'center',margin:'16px 0 10px'}}>
             <AnimatedDonut data={DONUT} size={170} stroke={30}/>
@@ -115,7 +207,6 @@ export default function CEODashboard() {
       <FadeTable delay={150}>
         <div className={d.tableHeader}>
           <span className={d.tableTitle}>Top Performing Courses</span>
-          <button className={d.filterBtn}>⊟ Filter</button>
         </div>
         <table>
           <thead><tr><th>Course</th><th>Students</th><th>Revenue</th><th>Growth</th><th>Rating</th></tr></thead>

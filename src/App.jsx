@@ -21,10 +21,8 @@ import SocialMediaDashboard      from './pages/dashboards/SocialMediaDashboard'
 import InstructorDashboard       from './pages/dashboards/InstructorDashboard'
 import CustomerServiceDashboard  from './pages/dashboards/CustomerServiceDashboard'
 
-// CEO sub-pages (setPlans, askForReports, trackLevels)
+// CEO sub-pages
 import { CEOSetPlans, CEOAskReports, CEOTrackLevels } from './pages/dashboards/CEOSubPages'
-
-// Shared getCEOPlans page
 import GetCEOPlans from './pages/dashboards/GetCEOPlans'
 
 function P({ children }) {
@@ -34,55 +32,68 @@ function P({ children }) {
 export default function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const location = useLocation()
+
+  // Sidebar يظهر بس في staff-login والـ dashboards
+  const showSidebar =
+    location.pathname === '/staff-login' ||
+    location.pathname.startsWith('/dashboard')
+
   const showNavbar = location.pathname === '/'
 
   return (
     <div className="app-shell">
-      <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(p => !p)} />
+      {showSidebar && (
+        <Sidebar
+          collapsed={sidebarCollapsed}
+          onToggle={() => setSidebarCollapsed(p => !p)}
+        />
+      )}
       <div className="app-content">
         <div className="ambient-blob-1" />
         <div className="ambient-blob-2" />
         {showNavbar && <Navbar />}
         <Routes>
-          {/* Public flow */}
+          {/* ── Public Flow — بدون sidebar ── */}
           <Route path="/"             element={<LandingPage />} />
           <Route path="/register"     element={<RegistrationPage />} />
           <Route path="/payment"      element={<PaymentPage />} />
           <Route path="/confirmation" element={<ConfirmationPage />} />
           <Route path="/verify"       element={<CodeVerificationPage />} />
+
+          {/* ── Staff Area — sidebar بتظهر ── */}
           <Route path="/staff-login"  element={<StaffLoginPage />} />
 
-          {/* CEO — setPlans, askForReports, trackLevels */}
+          {/* CEO */}
           <Route path="/dashboard/ceo"         element={<P><CEODashboard /></P>} />
           <Route path="/dashboard/ceo/plans"   element={<P><CEOSetPlans /></P>} />
           <Route path="/dashboard/ceo/reports" element={<P><CEOAskReports /></P>} />
           <Route path="/dashboard/ceo/track"   element={<P><CEOTrackLevels /></P>} />
 
-          {/* Marketing Manager — setMarketingPlan, updateMarketingStrategy, generateLoadReport, getCEOPlans */}
+          {/* Marketing Manager */}
           <Route path="/dashboard/marketing"           element={<P><MarketingManagerDashboard /></P>} />
           <Route path="/dashboard/marketing/plans"     element={<P><GetCEOPlans /></P>} />
           <Route path="/dashboard/marketing/strategy"  element={<P><MarketingManagerDashboard /></P>} />
           <Route path="/dashboard/marketing/report"    element={<P><MarketingManagerDashboard /></P>} />
           <Route path="/dashboard/marketing/ceo-plans" element={<P><GetCEOPlans /></P>} />
 
-          {/* Marketer — excuteMarketingPlans, marketingForCourses */}
-          <Route path="/dashboard/marketer"          element={<P><MarketerDashboard /></P>} />
-          <Route path="/dashboard/marketer/execute"  element={<P><MarketerDashboard /></P>} />
-          <Route path="/dashboard/marketer/courses"  element={<P><MarketerDashboard /></P>} />
+          {/* Marketer */}
+          <Route path="/dashboard/marketer"         element={<P><MarketerDashboard /></P>} />
+          <Route path="/dashboard/marketer/execute" element={<P><MarketerDashboard /></P>} />
+          <Route path="/dashboard/marketer/courses" element={<P><MarketerDashboard /></P>} />
 
-          {/* Social Media Manager — managePages, trackAdvertisements, getCEOPlans */}
+          {/* Social Media Manager */}
           <Route path="/dashboard/social-media"           element={<P><SocialMediaDashboard /></P>} />
           <Route path="/dashboard/social-media/pages"     element={<P><SocialMediaDashboard /></P>} />
           <Route path="/dashboard/social-media/ads"       element={<P><SocialMediaDashboard /></P>} />
           <Route path="/dashboard/social-media/ceo-plans" element={<P><GetCEOPlans /></P>} />
 
-          {/* Instructor — getCEOPlans, getStudentsReports, updateStudentReports */}
+          {/* Instructor */}
           <Route path="/dashboard/instructor"           element={<P><InstructorDashboard /></P>} />
           <Route path="/dashboard/instructor/upload"    element={<P><InstructorDashboard /></P>} />
           <Route path="/dashboard/instructor/reports"   element={<P><InstructorDashboard /></P>} />
           <Route path="/dashboard/instructor/ceo-plans" element={<P><GetCEOPlans /></P>} />
 
-          {/* Customer Service — communicateWithStudent, getCEOPlans */}
+          {/* Customer Service */}
           <Route path="/dashboard/customer-service"           element={<P><CustomerServiceDashboard /></P>} />
           <Route path="/dashboard/customer-service/chat"      element={<P><CustomerServiceDashboard /></P>} />
           <Route path="/dashboard/customer-service/ceo-plans" element={<P><GetCEOPlans /></P>} />

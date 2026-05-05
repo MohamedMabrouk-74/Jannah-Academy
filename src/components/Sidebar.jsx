@@ -10,14 +10,6 @@ const FLOW_STEPS = [
   { label: 'Code Verification',path: '/verify',       step: 4 },
 ]
 
-const PUBLIC_ITEMS = [
-  { icon: '⊙', label: 'Landing Page',       path: '/' },
-  { icon: '👤', label: 'Registration',      path: '/register' },
-  { icon: '💳', label: 'Payment',           path: '/payment' },
-  { icon: '✓',  label: 'Confirmation',      path: '/confirmation' },
-  { icon: '✉',  label: 'Code Verification', path: '/verify' },
-]
-
 const FLOW_PATHS = ['/register', '/payment', '/confirmation', '/verify']
 
 export default function Sidebar({ collapsed, onToggle }) {
@@ -54,26 +46,6 @@ export default function Sidebar({ collapsed, onToggle }) {
 
       <div className={styles.scroll}>
 
-        {/* ── PUBLIC FLOW (always shown) ── */}
-        <div className={styles.group}>
-          {!collapsed && <span className={styles.groupLabel}>PUBLIC FLOW</span>}
-          {PUBLIC_ITEMS.map(item => {
-            const active = location.pathname === item.path
-            return (
-              <button
-                key={item.label}
-                className={`${styles.item} ${active ? styles.itemActive : ''}`}
-                onClick={() => navigate(item.path)}
-                title={collapsed ? item.label : ''}
-              >
-                <span className={styles.itemIcon}>{item.icon}</span>
-                {!collapsed && <span className={styles.itemLabel}>{item.label}</span>}
-                {!collapsed && active && <span className={styles.activeDot} />}
-              </button>
-            )
-          })}
-        </div>
-
         {/* Registration progress sub-steps */}
         {!collapsed && isFlowPage && (
           <div className={styles.flowBlock}>
@@ -93,8 +65,8 @@ export default function Sidebar({ collapsed, onToggle }) {
                   </div>
                 )
               })}
-            </div>
-            <div className={styles.progressTrack}>
+            </div> 
+          <div className={styles.progressTrack}>
               <div className={styles.progressFill} style={{ width: `${progress}%` }} />
             </div>
           </div>
@@ -168,8 +140,8 @@ export default function Sidebar({ collapsed, onToggle }) {
         </div>
         {!collapsed && (
           <div className={styles.userInfo}>
-            <div className={styles.userName}>{user ? user.name : 'Mohamed Mabrouk'}</div>
-            <div className={styles.userEmail}>{user ? user.role : 'mohamed@email.com'}</div>
+            <div className={styles.userName}>{user ? user.name : 'Ahmed Al-Rashid'}</div>
+            <div className={styles.userEmail}>{user ? user.role : 'ahmed@email.com'}</div>
           </div>
         )}
       </div>

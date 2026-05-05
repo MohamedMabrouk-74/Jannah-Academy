@@ -57,9 +57,10 @@ export default function InstructorDashboard() {
       <div className={d.twoCol}>
         <FadePanel delay={100}>
           <div className={d.panelHeader}>
-            <div><div className={d.panelTitle}>Lesson Completion Rate</div>
-              <div className={d.panelSub}>% of students completing each lesson — Quran Level 1</div></div>
-            <div className={d.tabGroup}><button className={d.tab}>7D</button><button className={`${d.tab} ${d.tabActive}`}>30D</button></div>
+            <div>
+              <div className={d.panelTitle}>Lesson Completion Rate</div>
+              <div className={d.panelSub}>% of students completing each lesson — Quran Level 1</div>
+            </div>
           </div>
           <div className={d.chartArea}>
             <AnimatedBarChart

@@ -48,8 +48,8 @@ export default function SocialMediaDashboard() {
         <FadePanel delay={100}>
           <div className={d.panelHeader}>
             <div><div className={d.panelTitle}>Platform Follower Growth</div>
-              <div className={d.panelSub}>5-month growth across all channels</div></div>
-            <div className={d.tabGroup}><button className={d.tab}>7D</button><button className={`${d.tab} ${d.tabActive}`}>30D</button></div>
+              <div className={d.panelSub}>5-month growth across all channels</div>
+            </div>
           </div>
           <div className={d.chartArea}>
             <AnimatedLineChart
@@ -73,8 +73,8 @@ export default function SocialMediaDashboard() {
         <FadePanel delay={200}>
           <div className={d.panelHeader}>
             <div><div className={d.panelTitle}>Engagement Rate</div>
-              <div className={d.panelSub}>Daily avg this week</div></div>
-            <div className={d.tabGroup}><button className={d.tab}>7D</button><button className={`${d.tab} ${d.tabActive}`}>30D</button></div>
+              <div className={d.panelSub}>Daily avg this week</div>
+            </div>
           </div>
           <div className={d.chartArea}>
             <AnimatedBarChart
@@ -103,7 +103,6 @@ export default function SocialMediaDashboard() {
         <div className={d.tableHeader}>
           <span className={d.tableTitle}>Content Calendar</span>
           <div className={d.tableActions}>
-            <button className={d.filterBtn}>⊟ Filter</button>
             <button className={d.addBtn}>+ Add Content</button>
           </div>
         </div>

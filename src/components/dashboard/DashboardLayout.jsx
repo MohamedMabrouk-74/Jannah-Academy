@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './DashboardLayout.module.css'
 
-export default function DashboardLayout({ avatar, title, subtitle, children }) {
+export default function DashboardLayout({ avatar, title, subtitle, children, actions }) {
   const [visible, setVisible] = useState(false)
   useEffect(() => { const t = setTimeout(() => setVisible(true), 50); return () => clearTimeout(t) }, [])
 
@@ -19,12 +19,8 @@ export default function DashboardLayout({ avatar, title, subtitle, children }) {
             <p className={styles.subtitle}>{subtitle} · Last updated: just now</p>
           </div>
         </div>
-        <div className={styles.headerRight}>
-          <button className={styles.btnExport}>↓ Export</button>
-          <button className={styles.btnNew}>+ New Report</button>
-          <button className={styles.iconBtn}>🔔</button>
-          <button className={styles.iconBtn}>⚙</button>
-        </div>
+        {/* Only render action buttons passed from the page — no dead placeholders */}
+        {actions && <div className={styles.headerRight}>{actions}</div>}
       </div>
       {children}
     </div>

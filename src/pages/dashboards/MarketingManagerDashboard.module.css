@@ -1,0 +1,313 @@
+/* ── Header Action Buttons ── */
+.btnStrategy {
+  background: rgba(96,165,250,0.12);
+  border: 1px solid rgba(96,165,250,0.35);
+  color: #60a5fa;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.btnStrategy:hover {
+  background: rgba(96,165,250,0.2);
+  border-color: rgba(96,165,250,0.6);
+}
+
+.btnReport {
+  background: linear-gradient(135deg, #5a4fcf, #7c6af7);
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.btnReport:hover { opacity: 0.88; }
+
+/* ── Modal Overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: #13101f;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 88vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.modalTitle {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: #f0eeff;
+  margin-bottom: 3px;
+}
+
+.modalSub {
+  font-size: 11px;
+  color: rgba(240,238,255,0.35);
+  font-family: monospace;
+}
+
+.closeBtn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(240,238,255,0.5);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.closeBtn:hover {
+  border-color: rgba(248,113,113,0.4);
+  color: #f87171;
+}
+
+.modalBody {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modalFooter {
+  padding: 16px 24px 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Form Elements ── */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(240,238,255,0.5);
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.input {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 9px;
+  padding: 10px 13px;
+  color: #f0eeff;
+  font-size: 13px;
+  outline: none;
+  font-family: var(--font-sans);
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.input:focus { border-color: rgba(124,106,247,0.55); }
+.input option { background: #13101f; }
+
+/* Channels chip group */
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.chip {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(240,238,255,0.55);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.chip:hover {
+  border-color: rgba(124,106,247,0.35);
+  color: rgba(240,238,255,0.85);
+}
+.chipActive {
+  background: rgba(124,106,247,0.15);
+  border-color: rgba(124,106,247,0.5);
+  color: #a29bfe;
+  font-weight: 600;
+}
+
+/* Report type buttons */
+.typeGroup {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+.typeBtn {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(240,238,255,0.55);
+  padding: 9px;
+  border-radius: 9px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.typeBtn:hover { border-color: rgba(124,106,247,0.35); }
+.typeBtnActive {
+  background: linear-gradient(135deg,#5a4fcf,#7c6af7);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Sections checklist */
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s;
+}
+.checkRow:last-child { border-bottom: none; }
+.checkRow:hover { background: rgba(255,255,255,0.02); border-radius: 6px; }
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  transition: all 0.18s;
+  color: #fff;
+}
+.checkboxOn {
+  background: #7c6af7;
+  border-color: #7c6af7;
+}
+.checkLabel {
+  font-size: 13px;
+  color: rgba(240,238,255,0.7);
+}
+
+/* Modal Buttons */
+.btnCancel {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(240,238,255,0.55);
+  padding: 10px 20px;
+  border-radius: 9px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.btnCancel:hover { border-color: rgba(255,255,255,0.25); }
+
+.btnSave {
+  background: linear-gradient(135deg,#5a4fcf,#7c6af7);
+  border: none;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, opacity 0.2s;
+}
+.btnSave:disabled { opacity: 0.5; cursor: not-allowed; }
+.btnSave:not(:disabled):hover { opacity: 0.88; }
+
+/* Success state */
+.successBody {
+  padding: 32px 24px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.successIcon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg,#059669,#34d399);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.successTitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0eeff;
+}
+.successSub {
+  font-size: 13px;
+  color: rgba(240,238,255,0.5);
+  line-height: 1.65;
+}
+.successSub code {
+  font-size: 12px;
+  background: rgba(255,255,255,0.07);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #a29bfe;
+}
+.spinner { display: inline-flex; align-items: center; gap: 6px; }
+
+@media (max-width: 600px) {
+  .row2 { grid-template-columns: 1fr; }
+  .typeGroup { grid-template-columns: repeat(2,1fr); }
+}

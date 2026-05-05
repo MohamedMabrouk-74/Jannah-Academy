@@ -78,10 +78,6 @@ export default function MarketerDashboard() {
               <div className={d.panelTitle}>Daily Campaign Performance</div>
               <div className={d.panelSub}>This week — impressions, clicks & conversions</div>
             </div>
-            <div className={d.tabGroup}>
-              <button className={d.tab}>7D</button>
-              <button className={`${d.tab} ${d.tabActive}`}>30D</button>
-            </div>
           </div>
           <div className={d.chartArea}>
             <AnimatedBarChart
