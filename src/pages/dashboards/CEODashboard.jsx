@@ -26,7 +26,7 @@ const COURSES = [
   { name:'Tajweed Mastery',    students:1240, rev:'$35K',  growth:'+22%', up:true,  rating:4.9 },
 ]
 
-// القيم الابتدائية للخطط
+
 const INITIAL_PLANS = [
   { id: 1, text: 'Expand to 3 new GCC markets by Q4 2026', status: 'Active', color: '#4ade80' },
   { id: 2, text: 'Reach 20,000 enrolled students by end of FY2026', status: 'Active', color: '#4ade80' },
@@ -60,7 +60,6 @@ function FadeTable({ children, delay = 0 }) {
 }
 
 export default function CEODashboard() {
-  // تحويل الخطط إلى State لكي نتمكن من التعديل عليها والإضافة لها
   const [plans, setPlans] = useState(INITIAL_PLANS)
   const [directive, setDirective] = useState('')
   const [priority, setPriority] = useState('High')
@@ -72,20 +71,19 @@ export default function CEODashboard() {
     
     setSaving(true)
     
-    // محاكاة تأخير الإرسال (API Call)
     setTimeout(() => {
       const newPlan = {
-        id: Date.now(), // إعطاء ID فريد
+        id: Date.now(), 
         text: directive,
-        status: 'Active', // جعل الخطة الجديدة نشطة افتراضياً
+        status: 'Active', 
         color: '#4ade80' 
       }
 
-      // إضافة الخطة الجديدة إلى أعلى القائمة
+      
       setPlans(prevPlans => [newPlan, ...prevPlans])
       
       setSaving(false)
-      setDirective('') // تفريغ حقل الإدخال
+      setDirective('') 
     }, 1000)
   }
 
@@ -98,7 +96,7 @@ export default function CEODashboard() {
         <StatCard icon="📖" iconBg="rgba(251,191,36,0.15)"  label="Active Courses"  value="47"    sub="12 launching soon"     change="+8"     changeUp delay={240} />
       </div>
 
-      {/* ── قسم Strategic Plans ── */}
+      {/* Strategic Plans */}
       <div style={{ margin: '0 32px 24px' }}>
         <FadePanel delay={80} style={{ padding: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
@@ -110,7 +108,7 @@ export default function CEODashboard() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: 24 }}>
-            {/* عرض القائمة من الـ State */}
+            {/* State */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {plans.map(p => (
                 <div key={p.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12 }}>
@@ -150,7 +148,7 @@ export default function CEODashboard() {
               </div>
               <button 
                 onClick={handleSetPlan}
-                disabled={!directive.trim()} // تعطيل الزر إذا كان الحقل فارغاً
+                disabled={!directive.trim()} 
                 style={{ width: '100%', padding: '12px', background: saving ? 'linear-gradient(135deg,#059669,#34d399)' : 'linear-gradient(135deg,#5a4fcf,#7c6af7)', opacity: !directive.trim() ? 0.5 : 1, border: 'none', borderRadius: 10, color: '#fff', fontSize: 14, fontWeight: 600, cursor: !directive.trim() ? 'not-allowed' : 'pointer', transition: 'all 0.3s' }}
               >
                 {saving ? '✓ Saved Successfully' : '⚑ Set Plan'}

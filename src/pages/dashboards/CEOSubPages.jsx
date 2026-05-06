@@ -18,7 +18,7 @@ function FadePanel({ children, delay = 0 }) {
   )
 }
 
-/* ── CEO.setPlans() ──────────────────────────────────────── */
+/*  CEO.setPlans()  */
 const DEPARTMENTS = ['Marketing Manager', 'Marketer', 'Social Media Manager', 'Instructor', 'Customer Service']
 
 export function CEOSetPlans() {
@@ -120,7 +120,7 @@ export function CEOSetPlans() {
   )
 }
 
-/* ── CEO.askForReports() ─────────────────────────────────── */
+/*  CEO.askForReports()  */
 const REPORTS = [
   { from: 'Marketing Manager', title: 'Q1 Campaign Performance',    date: 'Apr 9',  status: 'Received', statusC: '#4ade80', size: '2.4 MB' },
   { from: 'Marketer',          title: 'Monthly Ad Spend Summary',   date: 'Apr 10', status: 'Pending',  statusC: '#fbbf24', size: '—' },
@@ -186,7 +186,7 @@ export function CEOAskReports() {
   )
 }
 
-/* ── CEO.trackLevels() ───────────────────────────────────── */
+/* ── CEO.trackLevels() */
 const LEVELS = [
   { dept: 'Marketing Manager', kpi: 'Campaign ROI',    current: 87, target: 90, trend: '+5%',  up: true },
   { dept: 'Marketer',          kpi: 'Lead Conversion', current: 74, target: 80, trend: '+11%', up: true },

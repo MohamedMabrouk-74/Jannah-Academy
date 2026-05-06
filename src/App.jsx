@@ -33,7 +33,7 @@ export default function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const location = useLocation()
 
-  // Sidebar يظهر بس في staff-login والـ dashboards
+
   const showSidebar =
     location.pathname === '/staff-login' ||
     location.pathname.startsWith('/dashboard')
@@ -53,14 +53,14 @@ export default function App() {
         <div className="ambient-blob-2" />
         {showNavbar && <Navbar />}
         <Routes>
-          {/* ── Public Flow — بدون sidebar ── */}
+          {/* ── Public Flow — sidebar ── */}
           <Route path="/"             element={<LandingPage />} />
           <Route path="/register"     element={<RegistrationPage />} />
           <Route path="/payment"      element={<PaymentPage />} />
           <Route path="/confirmation" element={<ConfirmationPage />} />
           <Route path="/verify"       element={<CodeVerificationPage />} />
 
-          {/* ── Staff Area — sidebar بتظهر ── */}
+          {/* ── Staff Area — sidebar ── */}
           <Route path="/staff-login"  element={<StaffLoginPage />} />
 
           {/* CEO */}

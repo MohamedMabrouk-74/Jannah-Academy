@@ -39,7 +39,7 @@ function FadePanel({ children, delay = 0, style = {} }) {
   )
 }
 
-/* ── Set Marketing Strategy Modal ───────────────────────────── */
+/* ── Set Marketing Strategy Modal */
 function StrategyModal({ onClose }) {
   const [form, setForm] = useState({
     goal: 'Increase enrollment by 30%',
@@ -164,7 +164,7 @@ function StrategyModal({ onClose }) {
   )
 }
 
-/* ── Generate Report Modal ──────────────────────────────────── */
+/* ── Generate Report Modal  */
 function ReportModal({ onClose }) {
   const [type, setType] = useState('Monthly')
   const [sections, setSections] = useState(['Revenue Analysis','Campaign Performance','Conversion Rates'])
@@ -270,7 +270,7 @@ function ReportModal({ onClose }) {
   )
 }
 
-/* ── Main Dashboard ─────────────────────────────────────────── */
+/* ── Main Dashboard  */
 export default function MarketingManagerDashboard() {
   const [tableRef, tableInView] = useInView()
   const [search, setSearch]         = useState('')

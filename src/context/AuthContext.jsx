@@ -39,7 +39,7 @@ const ROLE_CONFIGS = {
     // Methods: excuteMarketingPlans, marketingForCourses
     navItems: [
       { icon: '📊', label: 'Overview',                path: '/dashboard/marketer' },
-      { icon: '⚡', label: 'Execute Marketing Plans', path: '/dashboard/marketer/execute' },
+      { icon: '⚡', label: 'Marketing Plans', path: '/dashboard/marketer/execute' },
       { icon: '🎓', label: 'Market for Courses',      path: '/dashboard/marketer/courses' },
     ],
     permissions: ['excuteMarketingPlans', 'marketingForCourses'],

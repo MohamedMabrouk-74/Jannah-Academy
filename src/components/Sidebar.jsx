@@ -140,8 +140,8 @@ export default function Sidebar({ collapsed, onToggle }) {
         </div>
         {!collapsed && (
           <div className={styles.userInfo}>
-            <div className={styles.userName}>{user ? user.name : 'Ahmed Al-Rashid'}</div>
-            <div className={styles.userEmail}>{user ? user.role : 'ahmed@email.com'}</div>
+            <div className={styles.userName}>{user ? user.name : 'Mohamed Mabrouk'}</div>
+            <div className={styles.userEmail}>{user ? user.role : 'mohamed@email.com'}</div>
           </div>
         )}
       </div>
