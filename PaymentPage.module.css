@@ -1,0 +1,107 @@
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.courseRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 24px;
+  animation: slideUpFade 0.5s ease-out forwards;
+}
+
+.courseThumb {
+  width: 40px;
+  height: 40px;
+  background: #4f46e5; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.courseName {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.coursePlan {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.lineItems {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lineItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.lineLabel { color: #94a3b8; }
+.lineVal { color: #f1f5f9; font-weight: 500; }
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.totalLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.totalVal {
+  font-size: 24px;
+  font-weight: 700;
+  color: #a855f7; 
+}
+
+.perks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.perk {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.perkCheck { color: #22c55e; font-weight: bold; }
+
+.secureNote {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
